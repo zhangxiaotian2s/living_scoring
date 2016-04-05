@@ -9,10 +9,9 @@ var livingInTp = function() {
 	this.sponsors_uuid = "8b85891f-0307-4e02-b7e5-abbeae99e4c7";
 	this.action_time = "5000";
 
-	this.color_style = getUrlParam('color_style');
-	this.pattern = getUrlParam('pattern');
+	this.color_style = getUrlParam('color_style')||"color_style_green";
+	this.pattern = getUrlParam('pattern')//"style_pattern";
 	this.group_index = 0; //标识group 的变化
-	this.group_teams_length = 0;
 
 	this.scroll_bottom = $('#scrollbottom');
 	this.scroll_bottom_box = $('#scrollbottombox');
@@ -96,15 +95,15 @@ livingInTp.prototype.setAsideLiDome = function(teamdata) {
 	_html += '<li><table border="0" cellspacing="0" cellpadding="0" width="100%" class="tablestyle1 tableaside" id="aside_list"><tbody>';
 	for (var i = 0; i < teamdata.length; i++) {
 		_html += '<tr>'
-		_html += '<td width="12.5% " class="fz14">'+teamdata[i].position+'</td>'
-		_html += '<td width="12.5%" class="fz14"><img src="'+teamdata[i].image+'"></td>'
-		_html += '<td width="50%" class="fz14">'+teamdata[i].team_name+'</td>'
-		_html += '<td width="12.5%" class="fz14">'+teamdata[i].score+'</td>'
-		_html += '<td width="12.5%" class="fz14">'+teamdata[i].total+'</td>'
+		_html += '<td width="12.5% " class="fz14">' + teamdata[i].position + '</td>'
+		_html += '<td width="12.5%" class="fz14"><img src="' + teamdata[i].image + '"></td>'
+		_html += '<td width="50%" class="fz14">' + teamdata[i].team_name + '</td>'
+		_html += '<td width="12.5%" class="fz14">' + teamdata[i].score + '</td>'
+		_html += '<td width="12.5%" class="fz14">' + teamdata[i].total + '</td>'
 		_html += '</tr>'
 	}
 	_html += '</tbody></table></li>'
-   	 self.aside_list_ol[0].innerHTML+=_html;
+	self.aside_list_ol[0].innerHTML += _html;
 };
 //赞助商
 livingInTp.prototype.setSponsorsDome = function(data) {
@@ -144,9 +143,7 @@ livingInTp.prototype.setGroupsDome = function(data) {
 	var self = this;
 	self.tablelist_ol.html("");
 	for (var i = 0; i < data.length; i++) {
-		//		self.group_index = i
 		for (var j = 0; j < data[i].team_detail.length; j++) {
-			self.group_teams_length++;
 			self.setLiDome(data[i].team_detail[j], data[i].par, i);
 		}
 	}
@@ -214,19 +211,19 @@ livingInTp.prototype.setTime = function() {
 	_time.html(_data);
 };
 //左侧滚动的时间处理
-livingInTp.prototype.scrollAsideAction=function(index){
-	  var self=this;
-	  var _height=-432;
-	  	self.aside_list_ol.css({
-	  		"-webkit-transition": "1s linear",
-			"-moz-transition": "1s linear",
-			"-o-transform": "1s linear",
-			"transition": "1s linear",
-			"-webkit-transform": "translateY("+_height*index+"px)",
-			"-moz-transform": "translateY("+_height*index+"px)",
-			"-o-transform": "translateY("+_height*index+"px)",
-			"transform": "translateY("+_height*index+"px)",
-	  	})
+livingInTp.prototype.scrollAsideAction = function(index) {
+	var self = this;
+	var _height = -432;
+	self.aside_list_ol.css({
+		"-webkit-transition": "1s linear",
+		"-moz-transition": "1s linear",
+		"-o-transform": "1s linear",
+		"transition": "1s linear",
+		"-webkit-transform": "translateY(" + _height * index + "px)",
+		"-moz-transform": "translateY(" + _height * index + "px)",
+		"-o-transform": "translateY(" + _height * index + "px)",
+		"transform": "translateY(" + _height * index + "px)",
+	})
 };
 //底部广告滚动动作
 livingInTp.prototype.scrollBottomAction = function() {
@@ -267,51 +264,58 @@ livingInTp.prototype.scrollBottomAction = function() {
 };
 //递减尾部追加 无限循环效果
 livingInTp.prototype.scrollTableAction = function(data) {
-		var self = this;
-		var _tablelist_ol = $(document).find("#tablelistol");
-		//获取所有li长度
-		var _list_length = _tablelist_ol.children('li').length
-			//统计执行次数的参数  次数与_listlength相等时刷新当前页面
-		var _num = 0;
+	var self = this;
+	var _tablelist_ol = $(document).find("#tablelistol");
+	//获取所有li长度
+	var _list_length = _tablelist_ol.children('li').length
+		//统计执行次数的参数  次数与_listlength相等时刷新当前页面
+	var _num = 0;
 
-		function tableListScrollFn() {
-			_num++
-			if (_num == _list_length) {
-				window.location.reload()
-			}
-			var _list_first = _tablelist_ol.children("li").eq(0);
-			//要根据第二个来设置大标题
-			var _group_index = _list_first.next('li').attr('data-group-index');
-			if (self.group_index != _group_index) {
-				self.group_index = _group_index;
-				self.setParDome(data[self.group_index].par);
-				self.scrollAsideAction(self.group_index);
-				self.header_title.html(data[self.group_index].round_name);
-			}
-			_list_first.css({
-				"-webkit-transition": "1s linear",
-				"-moz-transition": "1s linear",
-				"-o-transform": "1s linear",
-				"transition": "1s linear",
-				"margin-top": -_list_first.height() + 'px'
-			})
-			_list_first.on('transitionend', function() {
-				_tablelist_ol.append(_list_first);
-				_list_first.css({
-					"-webkit-transition": "0s linear",
-					"-moz-transition": "0s linear",
-					"-o-transform": "0s linear",
-					"transition": "0s linear",
-					"margin-top": "0px"
-				});
-			})
-		};
+	function tableListScrollFn() {
+		_num++
+		if (_num == _list_length) {
+			window.location.reload()
+		}
+		var _list_first = _tablelist_ol.children("li").eq(0);
+		//要根据第二个来设置大标题
+		var _group_index = _list_first.next('li').attr('data-group-index');
+		if (self.group_index != _group_index) {
+			self.group_index = _group_index;
+			self.setParDome(data[self.group_index].par);
+			self.scrollAsideAction(self.group_index);
+			self.header_title.html(data[self.group_index].round_name);
+		}
+		_tablelist_ol.css({
+			"-webkit-transition": "1s linear",
+			"-moz-transition": "1s linear",
+			"-o-transform": "1s linear",
+			"transition": "1s linear",
+//			"margin-top": -_list_first.height() + 'px'
+			"-webkit-transform": "translateY(-" +_list_first.height() + "px)",
+			"-moz-transform": "translateY(-" + _list_first.height() + "px)",
+			"-o-transform": "translateY(-" + _list_first.height() + "px)",
+			"transform": "translateY(-" + _list_first.height() + "px)"
+		})
+		_tablelist_ol.on('transitionend', function() {
+			_tablelist_ol.append(_list_first);
+			_tablelist_ol.css({
+				"-webkit-transition": "0s linear",
+				"-moz-transition": "0s linear",
+				"-o-transform": "0s linear",
+				"transition": "0s linear",
+			    "-webkit-transform": "translateY(0px)",
+				"-moz-transform": "translateY(0px)",
+				"-o-transform": "translateY(0px)",
+				"transform": "translateY(0px)"
+			});
+		})
+	};
 
-		var _table_list_timer = setInterval(function() {
-			tableListScrollFn()
-		}, self.action_time)
-	}
-	//翻转内容动作
+	var _table_list_timer = setInterval(function() {
+		tableListScrollFn()
+	}, self.action_time)
+};
+//翻转内容动作
 livingInTp.prototype.roatexAction = function() {
 	var self = this;
 	var _table_list = self.section_box.children('.Listitem'),

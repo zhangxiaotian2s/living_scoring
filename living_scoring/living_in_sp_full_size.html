@@ -7,13 +7,15 @@
 		<link rel="stylesheet" href="css/living_scoring.css" />
 	</head>
 
-	<body class="color_style_green  style_pattern">
+	<body class="">
 		<!--style_pattern-->
 		<!--[if ite IE 9]>
            <div class="browsehappy">
            	您的浏览器不支持本页面,建议使用<a href="http://www.googlechromer.cn/">谷歌</a>，<a href="http://www.firefox.com.cn/">火狐</a>浏览器
           </div>
       <![endif]-->
+      	<div class="loding pf" id="loding">
+		</div>
 		<aside class="living_left clearfix ">
 			<header>
 				<div class="logo">
@@ -25,84 +27,23 @@
 				<table border="0" cellspacing="0" cellpadding="0" width="100%" class="tablestyle1 tableaside">
 					<thead>
 						<th width="12.5% " class="fz14">排名</th>
-						<th width="12.5%" class="fz14">队徽</th>
-						<th width="50%" class="fz14">队名</th>
-						<th width="12.5%" class="fz14">成绩</th>
-						<th width="12.5%" class="fz14">总计</th>
+						<th width="50%" class="fz14">姓名</th>
+						<th width="12.5%" class="fz14">today</th>
+						<th width="12.5%" class="fz14">thru</th>
+						<th width="12.5%" class="fz14">score</th>
 					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td><img src="images/img2.jpg"></td>
-							<td>棕色高尔夫代表队</td>
-							<td>+121</td>
-							<td>1723</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><img src="images/img2.jpg"></td>
-							<td>棕色高尔夫代表队</td>
-							<td>+121</td>
-							<td>1723</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><img src="images/img2.jpg"></td>
-							<td>棕色高尔夫代表队</td>
-							<td>+121</td>
-							<td>1723</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><img src="images/img2.jpg"></td>
-							<td>棕色高尔夫代表队</td>
-							<td>+121</td>
-							<td>1723</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><img src="images/img2.jpg"></td>
-							<td>棕色高尔夫代表队</td>
-							<td>+121</td>
-							<td>1723</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><img src="images/img2.jpg"></td>
-							<td>棕色高尔夫代表队</td>
-							<td>+121</td>
-							<td>1723</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><img src="images/img2.jpg"></td>
-							<td>棕色高尔夫代表队</td>
-							<td>+121</td>
-							<td>1723</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><img src="images/img2.jpg"></td>
-							<td>棕色高尔夫代表队</td>
-							<td>+121</td>
-							<td>1723</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><img src="images/img2.jpg"></td>
-							<td>棕色高尔夫代表队</td>
-							<td>+121</td>
-							<td>1723</td>
-						</tr>
-					</tbody>
 				</table>
+				<div class="aside_list_box">
+					<ol id="aside_list_ol" class="asideol">
+					</ol>
+				</div>
 			</section>
 			<div class="blank10 bk_style"></div>
 			<footer>
 				<img src="images/smerweima.jpg" class="img-responsive">
 				<div class="footmes">
-					<time class="fz22 tc">03月16日 15：52</time>
-					<p class="fz20 tc">深圳正中高尔夫球会</p>
+					<time class="fz22 tc"  id="nowTime"></time>
+					<p class="fz20 tc" id="course"></p>
 				</div>
 			</footer>
 		</aside>
@@ -113,9 +54,6 @@
 				</div>
 			</header>
 			<div class="pr contentbox clearfix">
-				<div class="loding pa" id="loding">
-
-				</div>
 				<table class="headtable full_headtable" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<thead>
 						<th width="3.5%">pos</th>
@@ -145,324 +83,15 @@
 						<th width="3.5%"><span class="fz12 f_b">THRU</span></th>
 						<th width="3.5%"><span class="fz12 f_b">SCORE</span></th>
 					</thead>
-					<tr>
-						<td></td>
-						<td>PAR</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>2</td>
-						<td>4</td>
-						<td>1</td>
-						<td>2</td>
-						<td>4</td>
-						<td>4</td>
-						<td class=" f_b">5</td>
-						<td>4</td>
-						<td>4</td>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>2</td>
-						<td class="">4</td>
-						<td>2</td>
-						<td>3</td>
-						<td>2</td>
+					<tr id="par">
+						
 					</tr>
 				</table>
 				<div class="sectionbody">
 					<div class="sectionlistbox pr" id="sectionlistbox">
-						<div class="Listitem pa">
-							<table class="tablestyle1" width="100%" border="0" cellspacing="0" cellpadding="0">
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主11111</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-								<tr>
-									<td width="3.5%">1</td>
-									<td width="12.5%" class="bright">孙庄主</td>
-									<td width="3.5%"><span class="b_1"><em>1</em></span></td>
-									<td width="3.5%"><span class="b_2"><em>2</em></span></td>
-									<td width="3.5%"><span class="b_3"><em>3</em></span></td>
-									<td width="3.5%"><span class="b_4"><em>4</em></span></td>
-									<td width="3.5%"><span class="b_5"><em>5</em></span></td>
-									<td width="3.5%"><span class="b_6"><em>6</em></span></td>
-									<td width="3.5%"><span><em>7</em></span></td>
-									<td width="3.5%"><span><em>8</em></span></td>
-									<td width="3.5%"><span><em>9</em></span></td>
-									<td width="3.5%" class="bright"><span><em>10</em></span></td>
-									<td width="3.5%"><span><em>11</em></span></td>
-									<td width="3.5%"><span><em>12</em></span></td>
-									<td width="3.5%"><span><em>13</em></span></td>
-									<td width="3.5%"><span><em>14</em></span></td>
-									<td width="3.5%"><span><em>15</em></span></td>
-									<td width="3.5%"><span><em>16</em></span></td>
-									<td width="3.5%"><span><em>17</em></span></td>
-									<td width="3.5%"><span><em>18</em></span></td>
-									<td width="3.5%"><span><em>19</em></span></td>
-									<td width="3.5%"><span class="c_red"><em>20</em></span></td>
-									<td width="3.5%" class="bright"><span class="c_red"><em>21</em></span></td>
-									<td width="3.5%"><span class="c_blur">+3</span></td>
-									<td width="3.5%"><span class="c_blur">F</span></td>
-									<td width="3.5%"><span class="c_blur">+5</span></td>
-								</tr>
-							</table>
-						</div>
-						<div class="Listitem pa">2</div>
-						<div class="Listitem pa">3</div>
-						<div class="Listitem pa">4</div>
+					<ol id="tablelistol" class="personlist fullpersonlist">
+						
+					</ol>
 					</div>
 				</div>
 				<table class="table1_biao" width="100%" border="0" cellspacing="0" cellpadding="0">

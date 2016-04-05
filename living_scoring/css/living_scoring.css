@@ -116,19 +116,21 @@ h1,h2,h3,h4,h5,h6{ font-weight: normal; }
 .tablestyle1  tr td.bright,.headtable  tr td.bright{ border-right: #333333 solid 1px;}
 .tablestyle1  tr:first-of-type td{ font-size: 16px!important;}
 .tablestyle1  tr td,.full_table tr td{ background: #FFFFFF; }
+.tablestyle1  tr td.tdname{ font-size: 14px;}
 .tablestyle1  tr:nth-child(even) td{ background: #f6f6f6; }
 .tablestyle1  tr td span,.headtable thead th span,.full_table tr td span{ width: 32px;  height:32px; line-height: 32px; display: block;  margin: auto; }
 .tablestyle1  tr td em,.full_table tr td em{ font-style: normal;}
 .tablestyle1  tr:last-of-type td { border-bottom: #333333 solid 1px; }
 .Listitem{ width: 100%; height: 561px;  background: #e7e7e7;top: 0px;  left: 0px;}
-
+.headtable tr td{ border-bottom: #333333 solid 1px;}
 .table1_biao  td { padding: 6px 0px; background: #e7e7e7; line-height: 32px;}
 .table1_biao  span{width: 32px;  height: 32px; line-height: 32px; display: block; margin: auto;  float: left; margin: 0px 30px;}
+.fullpersonlist .sptablestyle tr td{ border-bottom: #e7e7e7 solid 1px; border-left: #E7E7E7 solid 1px;} 
 
-.sectionlistbox{ width: 100%; height:561px ; -ms-transform-style: preserve-3d; transform-style: preserve-3d;	}
+.sectionlistbox{ width: 100%; -ms-transform-style: preserve-3d; transform-style: preserve-3d;	}
 
 .sectionbody  ol li{  width: 100%; overflow: hidden;  height: auto;}
-
+.sectionbody ol.personlist li{ height: 561px; overflow: hidden; background: #f6f6f6;}
 .footbottom{ width: 100%; min-width: 1280px;}
 .footbottom .ggbottom img{ display: block;  margin: auto;}
 
@@ -171,7 +173,7 @@ h1,h2,h3,h4,h5,h6{ font-weight: normal; }
 .living_left header .logo{ height: 73px; background: #FFFFFF; overflow: hidden; }
 .living_left header .logo img{ height: 100%;}
 .living_left header h1{  height: 50px; text-align: center; line-height: 50px; }
-.aside_title{ background: #e7e7e7;}
+.aside_title{ background: #e7e7e7; border-top:#333333 solid 1px ;}
 .asidecontent { height: 463px; overflow: hidden; width: 100%;}
 .living_left footer img{ width: 290px; margin: auto;} 
 .living_right .middlebox{ min-width: 960px!important;}
