@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/living_scoring.css" />
+		<style>
+			.item {
+				position: absolute;
+				width: 100%;
+				height: 560px;
+				display: block;
+				background: rgba(255, 255, 255, 0.1);
+				/*box-shadow*/
+				-webkit-box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.2);
+				-moz-box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.2);
+				box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.2);
+				font-size: 20px;
+				text-align: center;
+				line-height: 200px;
+				color: rgba(0, 0, 0, 0.5);
+				font-family: sans-serif;
+				text-transform: uppercase;
+				/*transition*/
+				-webkit-transition: all 1s linear;
+				-moz-transition: all 1s linear;
+				-o-transition: all 1s linear;
+				transition: all 1s linear;
+			}
+			
+			.s_box {
+				width: 100%;
+				height: 560px;
+				transform-style: preserve-3d
+			}
+		</style>
+	</head>
+
+	<body>
+		<ol id="tablelistol">
+			<li data-group-index="0" style="transition: 1s linear; margin-top: -201px;">
+				<table class="full_table tableitem" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr class="full_table_h">
+							<td width="3.5%">T3</td>
+							<td width="12.5%" class="bright"></td>
+							<td colspan="1"><img src="null" width="30px" height="20px"></td>
+							<td colspan="20" class="text-left">会员D队</td>
+							<td width="3.5%"><span>3</span></td>
+							<td width="3.5%"><span>+3</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员D-1</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_5"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>5</em></span></td>
+							<td width="3.5%"><span><em>20</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>20</em></span></td>
+							<td width="3.5%"><span>3</span></td>
+							<td width="3.5%"><span>3</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员D-2</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_5"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>5</em></span></td>
+							<td width="3.5%"><span><em>20</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>20</em></span></td>
+							<td width="3.5%"><span>3</span></td>
+							<td width="3.5%"><span>3</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员D-3</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>3</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员D-4</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>3</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</li>
+			<li data-group-index="1">
+				<table class="full_table tableitem" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr class="full_table_h">
+							<td width="3.5%">1</td>
+							<td width="12.5%" class="bright"></td>
+							<td colspan="1"><img src="null" width="30px" height="20px"></td>
+							<td colspan="20" class="text-left">公开B队</td>
+							<td width="3.5%"><span>-5</span></td>
+							<td width="3.5%"><span>-5</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">公开B-1</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span><em>12</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>12</em></span></td>
+							<td width="3.5%"><span>-5</span></td>
+							<td width="3.5%"><span>-5</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">公开B-2</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span><em>12</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>12</em></span></td>
+							<td width="3.5%"><span>-5</span></td>
+							<td width="3.5%"><span>-5</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">公开B-3</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>-5</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">公开B-4</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>-5</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</li>
+			<li data-group-index="1">
+				<table class="full_table tableitem" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr class="full_table_h">
+							<td width="3.5%">2</td>
+							<td width="12.5%" class="bright"></td>
+							<td colspan="1"><img src="null" width="30px" height="20px"></td>
+							<td colspan="20" class="text-left">公开A队</td>
+							<td width="3.5%"><span>-5</span></td>
+							<td width="3.5%"><span>-2</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">公开A-1</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span><em>12</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>12</em></span></td>
+							<td width="3.5%"><span>-5</span></td>
+							<td width="3.5%"><span>-2</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">公开A-2</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span><em>12</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>12</em></span></td>
+							<td width="3.5%"><span>-5</span></td>
+							<td width="3.5%"><span>-2</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">公开A-3</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>-2</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">公开A-4</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>-2</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</li>
+			<li data-group-index="0" style="transition: 0s linear; margin-top: 0px;">
+				<table class="full_table tableitem" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr class="full_table_h">
+							<td width="3.5%">1</td>
+							<td width="12.5%" class="bright"></td>
+							<td colspan="1"><img src="null" width="30px" height="20px"></td>
+							<td colspan="20" class="text-left">会员A队</td>
+							<td width="3.5%"><span>-14</span></td>
+							<td width="3.5%"><span>-14</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员A-1</td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span><em>27</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>18</em></span></td>
+							<td width="3.5%"><span><em>45</em></span></td>
+							<td width="3.5%"><span>-13</span></td>
+							<td width="3.5%"><span>-14</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员A-2</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span><em>18</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>18</em></span></td>
+							<td width="3.5%"><span><em>36</em></span></td>
+							<td width="3.5%"><span>-13</span></td>
+							<td width="3.5%"><span>-14</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员A-3</td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_1"><em>1</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>10</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>10</em></span></td>
+							<td width="3.5%"><span>-1</span></td>
+							<td width="3.5%"><span>-14</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员A-4</td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>3</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>3</em></span></td>
+							<td width="3.5%"><span>-1</span></td>
+							<td width="3.5%"><span>-14</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</li>
+			<li data-group-index="0" style="transition: 0s linear; margin-top: 0px;">
+				<table class="full_table tableitem" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr class="full_table_h">
+							<td width="3.5%">2</td>
+							<td width="12.5%" class="bright"></td>
+							<td colspan="1"><img src="null" width="30px" height="20px"></td>
+							<td colspan="20" class="text-left">会员B队</td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>E</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员B-1</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>4</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>4</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>4</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>25</em></span></td>
+							<td width="3.5%"><span><em>25</em></span></td>
+							<td width="3.5%"><span>1</span></td>
+							<td width="3.5%"><span>0</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员B-2</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>3</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_2"><em>4</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>4</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>4</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>25</em></span></td>
+							<td width="3.5%"><span><em>25</em></span></td>
+							<td width="3.5%"><span>1</span></td>
+							<td width="3.5%"><span>0</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员B-3</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>0</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员B-4</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>0</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</li>
+			<li data-group-index="0" style="transition: 0s linear; margin-top: 0px;">
+				<table class="full_table tableitem" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr class="full_table_h">
+							<td width="3.5%">T3</td>
+							<td width="12.5%" class="bright"></td>
+							<td colspan="1"><img src="null" width="30px" height="20px"></td>
+							<td colspan="20" class="text-left">会员C队</td>
+							<td width="3.5%"><span>3</span></td>
+							<td width="3.5%"><span>+3</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员C-1</td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_5"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_5"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>5</em></span></td>
+							<td width="3.5%"><span><em>40</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>40</em></span></td>
+							<td width="3.5%"><span>3</span></td>
+							<td width="3.5%"><span>3</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员C-2</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_5"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_4"><em>5</em></span></td>
+							<td width="3.5%"><span class="b_3"><em>5</em></span></td>
+							<td width="3.5%"><span><em>20</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>20</em></span></td>
+							<td width="3.5%"><span>3</span></td>
+							<td width="3.5%"><span>3</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员C-3</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>3</span></td>
+						</tr>
+						<tr>
+							<td width="3.5%"></td>
+							<td width="12.5%" class="bright">会员C-4</td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span><em>-</em></span></td>
+							<td width="3.5%"><span>0</span></td>
+							<td width="3.5%"><span>3</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</li>
+		</ol>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script>
+		var box = $("#s_box");
+		r = 280 / Math.tan(30 / 180 * Math.PI)
+		box.children('.item').each(function(index) {
+			$(this).css({
+				"transform": "rotateX(" + 60 * index + "deg)  translateZ(" + r + "px)"
+			})
+		})
+		var a = 0
+		setInterval(function() {
+			box.css({
+				"transition": "1s linear",
+				"transform": "rotateX(-" + 60 * a + "deg)"
+			})
+			a++
+		}, 2000)
+	</script>
+
+</html>

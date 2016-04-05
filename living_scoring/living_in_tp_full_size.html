@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/living_scoring.css" />
+	</head>
+
+	<body class="color_style_green  style_pattern">
+		<!--[if ite IE 9]>
+           <div class="browsehappy">
+           	您的浏览器不支持本页面,建议使用<a href="http://www.googlechromer.cn/">谷歌</a>，<a href="http://www.firefox.com.cn/">火狐</a>浏览器
+          </div>
+      <![endif]-->
+		<aside class="living_left clearfix ">
+			<header>
+				<div class="logo">
+					<img src="images/logo.png" id="logo">
+				</div>
+				<h1 class="aside_title fz20">排行榜</h1>
+			</header>
+			<section class="asidecontent">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%" class="tablestyle1 tableaside">
+					<thead>
+						<th width="12.5% " class="fz14">排名</th>
+						<th width="12.5%" class="fz14">队徽</th>
+						<th width="50%" class="fz14">队名</th>
+						<th width="12.5%" class="fz14">成绩</th>
+						<th width="12.5%" class="fz14">总计</th>
+					</thead>
+				</table>
+				<div class="aside_list_box">
+					<ol id="aside_list_ol" class="asideol">
+					</ol>
+				</div>
+			</section>
+			<div class="blank10 bk_style"></div>
+			<footer>
+				<img src="images/smerweima.jpg" class="img-responsive">
+				<div class="footmes">
+					<time class="fz22 tc" id="nowTime"></time>
+					<p class="fz20 tc" id="course"></p>
+				</div>
+			</footer>
+		</aside>
+		<section class="living_right clearfix">
+			<header class="headertop">
+				<div class="middlebox pr">
+					<h1 id="headtitle" class="fz30">深圳国际赛公开资格赛   男子组第一轮</h1>
+				</div>
+			</header>
+			<div class="pr contentbox clearfix">
+				<table class="headtable full_headtable" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<thead>
+						<th width="3.5%">pos</th>
+						<th width="12.5%">NAME</th>
+						<th width="3.5%"><span>1</span></th>
+						<th width="3.5%"><span>2</span></th>
+						<th width="3.5%"><span>3</span></th>
+						<th width="3.5%"><span>4</span></th>
+						<th width="3.5%"><span>5</span></th>
+						<th width="3.5%"><span>6</span></th>
+						<th width="3.5%"><span>7</span></th>
+						<th width="3.5%"><span>8</span></th>
+						<th width="3.5%"><span>9</span></th>
+						<th width="3.5%"><span class="f_b">OUT</span></th>
+						<th width="3.5%"><span>10</span></th>
+						<th width="3.5%"><span>11</span></th>
+						<th width="3.5%"><span>12</span></th>
+						<th width="3.5%"><span>13</span></th>
+						<th width="3.5%"><span>14</span></th>
+						<th width="3.5%"><span>15</span></th>
+						<th width="3.5%"><span>16</span></th>
+						<th width="3.5%"><span>17</span></th>
+						<th width="3.5%"><span>18</span></th>
+						<th width="3.5%"><span class="f_b">IN</span></th>
+						<th width="3.5%"><span class="fz14 f_b">TOTAL</span></th>
+						<th width="3.5%"><span class="fz14 f_b">TODAY</span></th>
+						<th width="3.5%"><span class="fz14 f_b">SCORE</span></th>
+					</thead>
+					<tr id="par">
+
+					</tr>
+				</table>
+				<div class="sectionbody" id="sectionlistbox">
+					<ol id="tablelistol">
+
+					</ol>
+				</div>
+				<table class="table1_biao" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td><span class="b_1"><em></em></span>Eagle/Better</td>
+						<td><span class="b_2"><em></em></span>Birdie</td>
+						<td><span class="b_3"><em></em></span>Par</td>
+						<td><span class="b_4"><em></em></span>Bogey</td>
+						<td><span class="b_5"><em></em></span>Double Bogey</td>
+						<td><span class="b_6"><em></em></span>3+ Bogey</td>
+					</tr>
+				</table>
+			</div>
+			<div class="blank10"></div>
+			<div id="scrollbottombox" class="footscrollbox pr">
+				<ul class="pa" id="scrollbottom">
+				</ul>
+			</div>
+			<div class="blank10"></div>
+		</section>
+		<div class="blank10 bk_style"> </div>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/living_in_tp.js"></script>
+	<script>
+		var livingtp = new livingInTp();
+		livingtp.init()
+	</script>
+
+</html>
