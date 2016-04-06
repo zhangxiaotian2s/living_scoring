@@ -5,20 +5,19 @@ var livingInTp = function() {
 	this.api_living_tp = "http://tournament.development.mastergolf.cn/api/screen_livescoring/tp_screen_with_playerscores?uuid=";
 	this.api_sponsors = "http://tournament.development.mastergolf.cn//api/screen_livescoring/screen_in_sponsors?uuid=";
 	this.api_aside_rank = "http://tournament.development.mastergolf.cn/api/screen_livescoring/tp_screen_in_teams?uuid=";
-	this.tp_uuid = "7101bde9-44a6-4a01-98d2-60d0342a7701";
-	this.sponsors_uuid = "8b85891f-0307-4e02-b7e5-abbeae99e4c7";
-	this.action_time = "5000";
-
-	this.color_style = getUrlParam('color_style')||"color_style_green";
-	this.pattern = getUrlParam('pattern')//"style_pattern";
 	this.group_index = 0; //标识group 的变化
-
 	this.scroll_bottom = $('#scrollbottom');
 	this.scroll_bottom_box = $('#scrollbottombox');
 	this.par = $("#par");
 	this.tablelist_ol = $("#tablelistol");
 	this.header_title = $("#headtitle");
 	this.aside_list_ol = $('#aside_list_ol');
+	this.color_style = getUrlParam('colorStyle') || "color_style_green"
+	this.pattern = getUrlParam('pattern') //"style_pattern";
+	this.tp_uuid = getUrlParam('uuid') || '7101bde9-44a6-4a01-98d2-60d0342a7701';
+	this.sponsors_uuid = getUrlParam('sponsorsUuid') || "8b85891f-0307-4e02-b7e5-abbeae99e4c7";
+	this.intervalTime = getUrlParam('actionTime') || "5000";
+	this.animationTime = getUrlParam('animationTime') || "1s";
 };
 livingInTp.prototype.init = function() {
 	var self = this;
@@ -34,6 +33,8 @@ livingInTp.prototype.init = function() {
 	}
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////seciton list////////////////////////////////////////////////////
+
 //ajax获取 数据 data
 livingInTp.prototype.ajaxGetApiLivingTpData = function() {
 	var self = this;
@@ -44,77 +45,20 @@ livingInTp.prototype.ajaxGetApiLivingTpData = function() {
 			if (data.code == 10000 || data.code == 200) {
 				self.setGroupsDome(data.data.groups)
 				self.setHeadMes(data.data);
+			} else {
+				self.setErrorShow("数据获取失败！");
 			}
 		},
 		error: function() {
-
+			self.setErrorShow("数据获取失败！");
 		}
 	});
 };
-//ajax获取
-livingInTp.prototype.ajaxGetSponsorsData = function() {
-	var self = this;
-	$.ajax({
-		type: "get",
-		url: self.api_sponsors + self.sponsors_uuid,
-		success: function(data) {
-			if (data.code == 200 || data.code == 10000) {
-				self.setSponsorsDome(data.data)
-			}
-		},
-		error: function() {
-
-		}
-	});
-};
-//ajax获取左侧排行数据
-livingInTp.prototype.ajaxGetAsideRankDate = function() {
-	var self = this;
-	$.ajax({
-		type: "get",
-		url: self.api_aside_rank + self.tp_uuid,
-		success: function(data) {
-			if (data.code == 200 || data.code == 10000) {
-				self.setAsideListDome(data.data)
-			}
-		},
-		error: function() {}
-	});
-};
-//添加左侧l列表
-livingInTp.prototype.setAsideListDome = function(aisdedata) {
-	var self = this;
-	console.log(aisdedata)
-	for (var i = 0; i < aisdedata.length; i++) {
-		self.setAsideLiDome(aisdedata[i].teams)
-	}
-};
-livingInTp.prototype.setAsideLiDome = function(teamdata) {
-	var self = this;
-	var _html = ""
-	_html += '<li><table border="0" cellspacing="0" cellpadding="0" width="100%" class="tablestyle1 tableaside" id="aside_list"><tbody>';
-	for (var i = 0; i < teamdata.length; i++) {
-		_html += '<tr>'
-		_html += '<td width="12.5% " class="fz14">' + teamdata[i].position + '</td>'
-		_html += '<td width="12.5%" class="fz14"><img src="' + teamdata[i].image + '"></td>'
-		_html += '<td width="50%" class="fz14">' + teamdata[i].team_name + '</td>'
-		_html += '<td width="12.5%" class="fz14">' + teamdata[i].score + '</td>'
-		_html += '<td width="12.5%" class="fz14">' + teamdata[i].total + '</td>'
-		_html += '</tr>'
-	}
-	_html += '</tbody></table></li>'
-	self.aside_list_ol[0].innerHTML += _html;
-};
-//赞助商
-livingInTp.prototype.setSponsorsDome = function(data) {
-	var self = this;
-	var _html = "";
-	for (var i = 0; i < data.length; i++) {
-		_html += '<li><img src="' + data[i].name + '"  /></li>';
-	}
-	self.scroll_bottom.html(_html);
-	self.scrollBottomAction();
-};
+//error 提示刷新
+livingInTp.prototype.setErrorShow = function(errortext) {
+	var _html = '<div class="errorbox pf"><p>' + errortext + '<a href="javascript:window.location.reload()">刷新</a></p></div>';
+	$('body')[0].innerHTML += _html
+}
 //初始化设置头部信息
 livingInTp.prototype.setHeadMes = function(data) {
 	var self = this;
@@ -122,6 +66,21 @@ livingInTp.prototype.setHeadMes = function(data) {
 	$("#course").html(data.course);
 	$("#logo").attr('src', data.logo);
 	self.setParDome(data.groups[self.group_index].par);
+};
+
+//浏览器类型判断 如果IE 就引导用户去下载火狐和谷歌
+livingInTp.prototype.setBrowser = function() {
+	if ($.NV('name') == "" || $.NV('name') == "unkonw") {
+		var _html = '<div class="browsehappy"> 您的浏览器不支持本页面,建议使用<a href="http://www.googlechromer.cn/">谷歌</a>，<a href="http://www.firefox.com.cn/">火狐</a>浏览器</div>';
+		$('body').append(_html);
+	}
+};
+//设置显示当前时间
+livingInTp.prototype.setTime = function() {
+	var self = this
+	var _time = $("#nowTime");
+	var _data = new Date().Format("MM月dd日  hh:mm");
+	_time.html(_data);
 };
 //添加par数据的方法
 livingInTp.prototype.setParDome = function(datapar) {
@@ -196,72 +155,6 @@ livingInTp.prototype.setOneStrokeDome = function(data, datapar) {
 	return _html;
 };
 
-//浏览器类型判断 如果IE 就引导用户去下载火狐和谷歌
-livingInTp.prototype.setBrowser = function() {
-	if ($.NV('name') == "" || $.NV('name') == "unkonw") {
-		var _html = '<div class="browsehappy"> 您的浏览器不支持本页面,建议使用<a href="http://www.googlechromer.cn/">谷歌</a>，<a href="http://www.firefox.com.cn/">火狐</a>浏览器</div>';
-		$('body').append(_html);
-	}
-};
-//设置显示当前时间
-livingInTp.prototype.setTime = function() {
-	var self = this
-	var _time = $("#nowTime");
-	var _data = new Date().Format("MM月dd日  hh:mm");
-	_time.html(_data);
-};
-//左侧滚动的时间处理
-livingInTp.prototype.scrollAsideAction = function(index) {
-	var self = this;
-	var _height = -432;
-	self.aside_list_ol.css({
-		"-webkit-transition": "1s linear",
-		"-moz-transition": "1s linear",
-		"-o-transform": "1s linear",
-		"transition": "1s linear",
-		"-webkit-transform": "translateY(" + _height * index + "px)",
-		"-moz-transform": "translateY(" + _height * index + "px)",
-		"-o-transform": "translateY(" + _height * index + "px)",
-		"transform": "translateY(" + _height * index + "px)",
-	})
-};
-//底部广告滚动动作
-livingInTp.prototype.scrollBottomAction = function() {
-	var self = this;
-	var _box_width = self.scroll_bottom_box.width();
-	var _li = self.scroll_bottom.children('li'),
-		_width = _li.width();
-	//设置box居中
-	self.scroll_bottom.css({
-		"width": _width * _li.length + 'px',
-		"left": "50%",
-		"margin-left": -(_width * _li.length / 2) + 'px'
-	});
-	//设置滚动方法
-	function scrollFn() {
-		var _li_first = $('#scroll_bottom').children("li").eq(0);
-		_li_first.css({
-			"-webkit-transition": "1s linear",
-			"-moz-transition": "1s linear",
-			"-o-transform": "1s linear",
-			"transition": "1s linear",
-			"width": "0px"
-		});
-		_li_first.on('transitionend', function() {
-			$('#scroll_bottom').children('li').eq(0).remove();
-			$('#scroll_bottom').append(_li_first);
-			$('#scroll_bottom').children('li').eq(_li.length - 1).css({
-				"width": _width + "px"
-			})
-		})
-	};
-	//当ul 小于box 的时候不做滚动效果
-	if ((_width * _li.length) > _box_width) {
-		var_timer_sponsors = setInterval(function() {
-			scrollFn();
-		}, self.action_time)
-	}
-};
 //递减尾部追加 无限循环效果
 livingInTp.prototype.scrollTableAction = function(data) {
 	var self = this;
@@ -286,36 +179,163 @@ livingInTp.prototype.scrollTableAction = function(data) {
 			self.header_title.html(data[self.group_index].round_name);
 		}
 		_tablelist_ol.css({
-			"-webkit-transition": "1s linear",
-			"-moz-transition": "1s linear",
-			"-o-transform": "1s linear",
-			"transition": "1s linear",
-//			"margin-top": -_list_first.height() + 'px'
-			"-webkit-transform": "translateY(-" +_list_first.height() + "px)",
-			"-moz-transform": "translateY(-" + _list_first.height() + "px)",
-			"-o-transform": "translateY(-" + _list_first.height() + "px)",
-			"transform": "translateY(-" + _list_first.height() + "px)"
+			'-webkit-transition': '' + self.animationTime + '  linear',
+			'-moz-transition': '' + self.animationTime + ' linear',
+			'-o-transform': '' + self.animationTime + '  linear',
+			'transition': '' + self.animationTime + '  linear',
+			'-webkit-transform': 'translateY(-' + _list_first.height() + 'px)',
+			'-moz-transform': 'translateY(-' + _list_first.height() + 'px)',
+			'-o-transform': 'translateY(-' + _list_first.height() + 'px)',
+			'transform': 'translateY(-' + _list_first.height() + 'px)'
 		})
 		_tablelist_ol.on('transitionend', function() {
 			_tablelist_ol.append(_list_first);
 			_tablelist_ol.css({
-				"-webkit-transition": "0s linear",
-				"-moz-transition": "0s linear",
-				"-o-transform": "0s linear",
-				"transition": "0s linear",
-			    "-webkit-transform": "translateY(0px)",
-				"-moz-transform": "translateY(0px)",
-				"-o-transform": "translateY(0px)",
-				"transform": "translateY(0px)"
+				'-webkit-transition': '0s linear',
+				'-moz-transition': '0s linear',
+				'-o-transform': '0s linear',
+				'transition': '0s linear',
+				'-webkit-transform': 'translateY(0px)',
+				'-moz-transform': 'translateY(0px)',
+				'-o-transform': 'translateY(0px)',
+				'transform': 'translateY(0px)'
 			});
 		})
 	};
-
 	var _table_list_timer = setInterval(function() {
 		tableListScrollFn()
-	}, self.action_time)
+	}, self.intervalTime)
 };
-//翻转内容动作
+///////////////////////////////////////////////////////////////////////////////////////////////seciton aside////////////////////////////////////////////////////
+//ajax获取左侧排行数据
+livingInTp.prototype.ajaxGetAsideRankDate = function() {
+	var self = this;
+	$.ajax({
+		type: "get",
+		url: self.api_aside_rank + self.tp_uuid,
+		success: function(data) {
+			if (data.code == 200 || data.code == 10000) {
+				self.setAsideListDome(data.data)
+			}
+		},
+		error: function() {}
+	});
+};
+//添加左侧l列表
+livingInTp.prototype.setAsideListDome = function(aisdedata) {
+	var self = this;
+	for (var i = 0; i < aisdedata.length; i++) {
+		self.setAsideLiDome(aisdedata[i].teams)
+	}
+};
+livingInTp.prototype.setAsideLiDome = function(teamdata) {
+	var self = this;
+	var _html = ""
+	_html += '<li><table border="0" cellspacing="0" cellpadding="0" width="100%" class="tablestyle1 tableaside" id="aside_list"><tbody>';
+	for (var i = 0; i < teamdata.length; i++) {
+		_html += '<tr>'
+		_html += '<td width="12.5% " class="fz14">' + teamdata[i].position + '</td>'
+		_html += '<td width="12.5%" class="fz14"><img src="' + teamdata[i].image + '"></td>'
+		_html += '<td width="50%" class="fz14">' + teamdata[i].team_name + '</td>'
+		_html += '<td width="12.5%" class="fz14">' + teamdata[i].score + '</td>'
+		_html += '<td width="12.5%" class="fz14">' + teamdata[i].total + '</td>'
+		_html += '</tr>'
+	}
+	_html += '</tbody></table></li>'
+	self.aside_list_ol[0].innerHTML += _html;
+};
+//左侧滚动的时间处理
+livingInTp.prototype.scrollAsideAction = function(index) {
+	var self = this;
+	var _height = -432;
+	self.aside_list_ol.css({
+		'-webkit-transition': '' + self.animationTime + ' linear',
+		'-moz-transition': '' + self.animationTime + ' linear',
+		'-o-transform': '' + self.animationTime + ' linear',
+		'transition': '' + self.animationTime + ' linear',
+		'-webkit-transform': 'translateY(' + _height * index + 'px)',
+		'-moz-transform': 'translateY(' + _height * index + 'px)',
+		'-o-transform': 'translateY(' + _height * index + 'px)',
+		'transform': 'translateY(' + _height * index + 'px)',
+	})
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////seciton sponsors////////////////////////////////////////////////////
+
+//ajax获取赞助商
+livingInTp.prototype.ajaxGetSponsorsData = function() {
+	var self = this;
+	$.ajax({
+		type: "get",
+		url: self.api_sponsors + self.sponsors_uuid,
+		success: function(data) {
+			if (data.code == 200 || data.code == 10000) {
+				self.setSponsorsDome(data.data)
+			}
+		},
+		error: function() {
+
+		}
+	});
+};
+//赞助商插入dome
+livingInTp.prototype.setSponsorsDome = function(data) {
+	var self = this;
+	var _html = '';
+	for (var i = 0; i < data.length; i++) {
+		_html += '<li><img src="' + data[i].name + '"  /></li>';
+	}
+	self.scroll_bottom.html(_html);
+	self.scrollBottomAction();
+};
+//底部广告滚动动作
+livingInTp.prototype.scrollBottomAction = function() {
+	var self = this;
+	var _box_width = self.scroll_bottom_box.width();
+	var _li = self.scroll_bottom.children('li'),
+		_width = _li.width();
+	//设置box居中
+	self.scroll_bottom.css({
+		'width': _width * _li.length + 'px',
+		'left': "50%",
+		'margin-left': -(_width * _li.length / 2) + 'px'
+	});
+	//设置滚动方法
+	function scrollFn() {
+		var _li_first = $('#scroll_bottom').children("li").eq(0);
+		self.scroll_bottom_box.css({
+			'-webkit-transition': '' + self.animationTime + ' linear',
+			'-moz-transition': '' + self.animationTime + ' linear',
+			'-o-transform': '' + self.animationTime + ' linear',
+			'transition': '' + self.animationTime + ' linear',
+			'-webkit-transform': 'translateX(-' + _width + 'px)',
+			'-moz-transform': 'translateX(-' + _width + 'px)',
+			'-o-transform': 'translateX(-' + _width + 'px)',
+			'transform': 'translateX(-' + _width + 'px)'
+		});
+		self.scroll_bottom_box.on('transitionend', function() {
+			$('#scroll_bottom').append(_li_first);
+			self.scroll_bottom_box.css({
+				'-webkit-transition': '0s linear',
+				'-moz-transition': '0s linear',
+				'-o-transform': '0s linear',
+				'transition': '0s linear',
+				'-webkit-transform': 'translateX(0px)',
+				'-moz-transform': 'translateX(0px)',
+				'-o-transform': 'translateX(0px)',
+				'transform': 'translateX(0px)'
+			});
+		})
+	};
+	//当ul 小于box 的时候不做滚动效果
+	if ((_width * _li.length) > _box_width) {
+		var_timer_sponsors = setInterval(function() {
+			scrollFn();
+		}, self.intervalTime)
+	}
+};
+
+//翻转内容动作//废弃留作备份
 livingInTp.prototype.roatexAction = function() {
 	var self = this;
 	var _table_list = self.section_box.children('.Listitem'),
